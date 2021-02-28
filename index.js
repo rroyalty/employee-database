@@ -1,6 +1,7 @@
 const Manager = require('./classes/manager');
 const Engineer = require('./classes/engineer');
 const Intern = require('./classes/intern');
+const htmlGen = require('./htmlGen/htmlGen')
 
 const inquirer = require('inquirer');
 const fs = require('fs');
@@ -41,13 +42,14 @@ const newEmployeeGen = async (role) => {
                                     type: 'input',
                                     name: 'office',
                                     message: `What is the ${role}'s office number?`,
-                                    validate: (name) => {
+                                    validate: (office) => {
                                         if (office === "") return `Please input an office number.`;
                                         else return true;
                                     }
                                 }]).then((data) => {
-                                        const newManager = new Manager(data.office, role, _data.name, id, _data.email);
+                                        const newManager = new Manager(data.office, _data.name, id, _data.email);
                                         employeeList.push(newManager);
+                                        console.log(newManager.getClass());
                                     }
                                 )
                     break;
@@ -59,11 +61,11 @@ const newEmployeeGen = async (role) => {
                                     name: 'github',
                                     message: `What is the ${role}'s github username?`,
                                     validate: (github) => {
-                                        if (office === "") return `Please input a github username.`;
+                                        if (github === "") return `Please input a github username.`;
                                         else return true;
                                     }
                                 }]).then((data) => {
-                                        const newEngineer = new Engineer(data.github, role, _data.name, id, _data.email);
+                                        const newEngineer = new Engineer(data.github, _data.name, id, _data.email);
                                         employeeList.push(newEngineer);
                                     }
                                 )
@@ -75,12 +77,12 @@ const newEmployeeGen = async (role) => {
                                     type: 'input',
                                     name: 'school',
                                     message: `What is the ${role}'s school?`,
-                                    validate: (github) => {
-                                        if (office === "") return `Please input a school.`;
+                                    validate: (school) => {
+                                        if (school === "") return `Please input a school.`;
                                         else return true;
                                     }
                                 }]).then((data) => {
-                                        const newIntern = new Intern(data.school, role, _data.name, id, _data.email);
+                                        const newIntern = new Intern(data.school, _data.name, id, _data.email);
                                         employeeList.push(newIntern);
                                     }
                                 )
@@ -90,6 +92,38 @@ const newEmployeeGen = async (role) => {
                 generalMenu();
             } 
         )
+}
+
+const generateHTML = (employeeList) => {
+    let htmlText = htmlGen.top
+    let UAT = "";
+    let UAV = "";
+    let icon = "";
+    employeeList.forEach(element => {
+        switch (element.getClass()) {
+            case 'Manager':
+                UAT = `Office`;
+                UAV = `<p>${element.office}</p>`;
+                icon = `bullhorn`;
+            break;
+            case 'Engineer':
+                UAT = `Github`;
+                UAV = `<br><a href="https://github.com/${element.github}" target="_blank">${element.github}</a>`;
+                icon = `calculator`;
+            break;
+            case 'Intern':
+                UAT = `School`;
+                UAV = `<p>${element.school}</p>`;
+                icon = `baby`;
+            break;
+        }
+        htmlText = `${htmlText}\n${htmlGen.employee(element.getClass(), element.id, element.name, element.email, icon, UAT, UAV)}`
+    });
+    htmlText = `${htmlText}\n${htmlGen.bottom}`;
+
+    fs.writeFile('./index.html', htmlText, (err) => {
+        err ? console.log(err, "Something went wrong :(") : console.log('Team created - check the folder named *final* to see the finished product. ')
+      })
 }
 
 const generalMenu = () => {
@@ -112,7 +146,7 @@ const generalMenu = () => {
                         await newEmployeeGen('intern');
                     break;
                     case "Export HTML Page":
-                        
+                        generateHTML(employeeList);
                     break;
                     
                 }
