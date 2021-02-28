@@ -1,0 +1,25 @@
+{
+  "name": "employee-database",
+  "version": "1.0.0",
+  "description": "Manage your employees.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rroyalty/employee-database.git"
+  },
+  "author": "Ryan Royalty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rroyalty/employee-database/issues"
+  },
+  "homepage": "https://github.com/rroyalty/employee-database#readme",
+  "dependencies": {
+    "inquirer": "^8.0.0"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
