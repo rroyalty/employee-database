@@ -49,7 +49,7 @@ const newEmployeeGen = async (role) => {
                                 }]).then((data) => {
                                         const newManager = new Manager(data.office, _data.name, id, _data.email);
                                         employeeList.push(newManager);
-                                        console.log(newManager.getClass());
+                                        console.log(`Manager created.\n`);
                                     }
                                 )
                     break;
@@ -67,6 +67,7 @@ const newEmployeeGen = async (role) => {
                                 }]).then((data) => {
                                         const newEngineer = new Engineer(data.github, _data.name, id, _data.email);
                                         employeeList.push(newEngineer);
+                                        console.log(`Engineer created.\n`);
                                     }
                                 )
                     break;
@@ -84,6 +85,7 @@ const newEmployeeGen = async (role) => {
                                 }]).then((data) => {
                                         const newIntern = new Intern(data.school, _data.name, id, _data.email);
                                         employeeList.push(newIntern);
+                                        console.log(`Intern created.\n`);
                                     }
                                 )
                     break;
@@ -122,7 +124,7 @@ const generateHTML = (employeeList) => {
     htmlText = `${htmlText}\n${htmlGen.bottom}`;
 
     fs.writeFile('./index.html', htmlText, (err) => {
-        err ? console.log(err, "Something went wrong :(") : console.log('Team created - check the folder named *final* to see the finished product. ')
+        err ? console.log(err, "Something went wrong :(") : console.log('Team created - check the main direction for the index.html file.')
       })
 }
 
