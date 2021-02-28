@@ -21,6 +21,8 @@ This app is used to build an HTML page that displays a roster of employees based
 
 ![Example File](./assets/example-index.jpg)
 
+[Video](https://drive.google.com/file/d/1rtcO-L9_qHyM1yeg-qYdcbkqukO-PZ68/view)
+
 ---
 <a name="Installation"></a>
 ### Installation 
