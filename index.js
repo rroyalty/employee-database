@@ -1,16 +1,20 @@
+// Imports
 const Manager = require('./classes/manager');
 const Engineer = require('./classes/engineer');
 const Intern = require('./classes/intern');
-const htmlGen = require('./htmlGen/htmlGen')
+const htmlGen = require('./htmlGen/htmlGen');
 
+// Packages
 const inquirer = require('inquirer');
 const fs = require('fs');
-const path = require('path');
 
+// Starting Variables
 const employeeList = [];
 let id = 1;
 
+// New Employee Object, after inquirer prompts.
 const newEmployeeGen = async (role) => {
+    // Generic Employee
     await inquirer
         .prompt([
             {
@@ -32,9 +36,11 @@ const newEmployeeGen = async (role) => {
                     else return true;
                 }
             }
+        // Specify Employee Specialty.
         ]).then(async (data) => {
                 const _data = data; 
                 switch(role) {
+                    // Manager
                     case 'manager':
                         await inquirer
                             .prompt([
@@ -53,6 +59,8 @@ const newEmployeeGen = async (role) => {
                                     }
                                 )
                     break;
+
+                    //Engineer
                     case 'engineer':
                         await inquirer
                             .prompt([
@@ -71,6 +79,8 @@ const newEmployeeGen = async (role) => {
                                     }
                                 )
                     break;
+
+                    // Intern
                     case 'intern':
                         await inquirer
                             .prompt([
@@ -96,6 +106,7 @@ const newEmployeeGen = async (role) => {
         )
 }
 
+// Generates the HTML object.
 const generateHTML = (employeeList) => {
     let htmlText = htmlGen.top
     let UAT = "";
@@ -123,11 +134,13 @@ const generateHTML = (employeeList) => {
     });
     htmlText = `${htmlText}\n${htmlGen.bottom}`;
 
-    fs.writeFile('./index.html', htmlText, (err) => {
+    fs.writeFileSync('./index.html', htmlText, (err) => {
         err ? console.log(err, "Something went wrong :(") : console.log('Team created - check the main direction for the index.html file.')
-      })
+      });
+
 }
 
+// General Inquirer Menu
 const generalMenu = () => {
     inquirer
         .prompt([{
@@ -156,6 +169,7 @@ const generalMenu = () => {
 
 }
 
+// Init
 console.log(`Welcome to Ryan's Employee Page Generator.
 To start, we'll input the information for the manager of the team:\n`);
 
