@@ -23,13 +23,22 @@ This app is used to build an HTML page that displays a roster of employees based
 
 ---
 <a name="Installation"></a>
-### Installation
+### Installation 
 
+This application requires node.js. 
+[Node](https://nodejs.org/en/)  
+
+To install the application:
+1.  Clone the Repository to your local device.  
+2.  Using your Terminal, run `npm install` in the directory of the cloned repository.  
+3.  After installing packages, run `node index`  
+4.  Follow user prompts in Terminal.
 
 ---
 <a name="Usage"></a>
 ### Usage
 
+Feel free to use this program in whichever way you see fit.
 
 ---
 <a name="License"></a>
@@ -701,11 +710,26 @@ For more information on this, and how to apply and follow the GNU AGPL, see
 <a name="Contributing"></a>
 ### Contributing
 
+Bootcamp Instructor:  
+[Scott Byers](https://github.com/switch120)  
+
+Bootcamp TA:  
+[Michael Fearnley](https://michaelfearnley.com/)  
+
+Technologies Used:
+[NPM](https://www.npmjs.com/)  
+[Bulma](https://bulma.io/)  
+[Inquirer](https://www.npmjs.com/package/inquirer)  
+[Jest](https://jestjs.io/)  
 
 ---
 <a name="Tests"></a>
 ### Tests
 
+[Jest](https://jestjs.io/)  
+
+To test:  
+Run `npm test` in the app directory using your Terminal.
 
 ---
 <a name="Questions"></a>
