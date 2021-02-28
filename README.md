@@ -19,7 +19,7 @@
 
 This app is used to build an HTML page that displays a roster of employees based on user inquierer input. Employees are seperated into 3 categories; Manager, Engineer, Intern. One manager per team is assigned at the beginning of the program and then the user is allowed to add as many Engineers and Interns as they please. Employees are automatically assigned an incremental ID number.
 
-![Example File](./index.html)
+![Example File](./assets/example-index.jpg)
 
 ---
 <a name="Installation"></a>
