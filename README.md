@@ -716,7 +716,7 @@ Bootcamp Instructor:
 Bootcamp TA:  
 [Michael Fearnley](https://michaelfearnley.com/)  
 
-Technologies Used:
+Technologies Used:  
 [NPM](https://www.npmjs.com/)  
 [Bulma](https://bulma.io/)  
 [Inquirer](https://www.npmjs.com/package/inquirer)  
